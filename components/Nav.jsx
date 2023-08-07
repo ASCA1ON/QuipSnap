@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const isLoggedIn = true;
+  const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() => {
-    const setProviders = async () => {
+    const setUpProviders = async () => {
       const response = await getProviders();
       setProviders(response);
     };
-    setProviders();
+    setUpProviders();
   }, []);
 
   return (
@@ -31,12 +31,13 @@ const Nav = () => {
         />
         <p className="logo_text">StoryVerse</p>
       </Link>
+      {/* {alert(providers)} */}
 
       {/* desktop nav */}
       <div className="sm:flex hidden">
-        {isLoggedIn ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create_story" className="black_btn">
+            <Link href="/create-story" className="black_btn">
               Create Story
             </Link>
             <button type="button" onClick={signOut} className="outline_btn">
@@ -44,7 +45,7 @@ const Nav = () => {
             </button>
             <Link href="/profile">
               <Image
-                src="/assets/images/logo.svg"
+                src={session?.user.image}
                 alt="profile pic"
                 width={37}
                 height={37}
@@ -71,10 +72,10 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative">
-        {isLoggedIn ? (
+        {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               alt="profile pic"
               width={37}
               height={37}
@@ -91,7 +92,7 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href="/create_story"
+                  href="/create-story"
                   classname="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
