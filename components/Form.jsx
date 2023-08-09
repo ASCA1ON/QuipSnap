@@ -8,7 +8,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       </h1>
       <p className="desc text-left max-w-md">
         {type} and share amazing with the world, and unleash your imagination
-        with StoryVerse
+        with QuipSnap
       </p>
       <form
         onSubmit={handleSubmit}
@@ -16,13 +16,13 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       >
         <label>
           <span className=" font-satoshi font-semibold text-base text-gray-700">
-            Your Story
+            Your Quip
           </span>
           <textarea
-            value={post.story}
+            value={post.quip}
             className="form_textarea"
-            onChange={(e) => setPost({ ...post, story: e.target.value })}
-            placeholder="Start writing your story here..."
+            onChange={(e) => setPost({ ...post, quip: e.target.value })}
+            placeholder="Start writing your quip here..."
             required
           />
         </label>

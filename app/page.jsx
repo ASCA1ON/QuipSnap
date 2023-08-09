@@ -5,9 +5,9 @@ const Home = () => {
     <section className="w-full flex-center flex-col">
         <h1 className="head_text text-center" >Discover & Share 
             <br className="max-md:hidden" />
-            <span className="orange_gradient text-center">Amazing Tales</span>
+            <span className="orange_gradient text-center">Amazing Quip</span>
         </h1>
-        <p className="desc text-center">Script is a online tool for reading and sharing you stories</p>
+        <p className="desc text-center">QuipSnap is a online tool for reading and sharing your jokes</p>
 
         <Feed/>
     </section>

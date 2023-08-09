@@ -24,12 +24,12 @@ const Nav = () => {
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"
-          alt="StoryVerse Logo"
+          alt="QuipSnap Logo"
           width={30}
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">StoryVerse</p>
+        <p className="logo_text">QuipSnap</p>
       </Link>
       {/* {alert(providers)} */}
 
@@ -37,8 +37,8 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-story" className="black_btn">
-              Create Story
+            <Link href="/create-quip" className="black_btn">
+              Create Quip
             </Link>
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
@@ -92,11 +92,11 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href="/create-story"
+                  href="/create-quip"
                   classname="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  Create Story
+                  Create Quip
                 </Link>
                 <button
                   type="button"

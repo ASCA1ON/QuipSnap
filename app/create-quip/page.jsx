@@ -6,26 +6,26 @@ import { useState } from "react";
 
 import Form from "@/components/Form";
 
-const CreateStory = () => {
+const CreateQuip = () => {
     const router = useRouter();
     const {data: session}= useSession()
 
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
-    story: "",
+    quip: "",
     tag: "",
   });
-  const createStory = async (e) => {
+  const createQuip = async (e) => {
     e.preventDefault()
     setSubmitting(true)
     // if(!session){
     //     router.push('/si')
     // }
     try{
-        const response = await fetch('/api/story/new',{
+        const response = await fetch('/api/quip/new',{
             method:'POST',
             body: JSON.stringify({
-                story:post.story,
+                quip:post.quip,
                 userId: session?.user.id,
                 tag: post.tag
             })
@@ -45,9 +45,9 @@ const CreateStory = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={createStory}
+      handleSubmit={createQuip}
     />
   );
 };
 
-export default CreateStory;
+export default CreateQuip;

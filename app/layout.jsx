@@ -3,8 +3,8 @@ import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
 
 export const metadata = {
-  title: "ScriptVerse",
-  description: "Discover & Share amazing tales",
+  title: "QuipSnap",
+  description: "Discover & Share amazing jokes",
 };
 
 const RootLayout = ({ children }) => {

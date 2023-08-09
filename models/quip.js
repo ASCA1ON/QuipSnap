@@ -2,20 +2,20 @@ const { Schema, model, models } = require("mongoose");
 
 
 
-const storySchema = new Schema({
+const quipSchema = new Schema({
     creator:{
         type: Schema.Types.ObjectId,
         ref:'User'
     },
-    story: {
+    quip: {
         type: String,
-        required: [true, 'Story is required!'],
+        required: [true, 'Quip is required!'],
         },
     tag: {
         type: String,
         required: [true, 'Tag is required!'],
         }
 })
-const Story = models.Story || model("Story", storySchema)
+const Quip = models.Quip || model("Quip", quipSchema)
 
-export default Story
+export default Quip
