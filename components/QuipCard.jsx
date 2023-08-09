@@ -6,6 +6,13 @@ import { useState } from "react";
 const QuipCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const [copied, setCopied] = useState("");
 
+  const handleCopy=()=>{
+    setCopied(post.quip)
+    console.log(post.quip);
+    navigator.clipboard.writeText(post.quip)
+    setTimeout(() => setCopied(""), 4000);
+  }
+
   return (
     <div className="quip_card">
       <div className="flex justify-between items-start gap-5">
@@ -27,13 +34,14 @@ const QuipCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           </div>
         </div>
 
-        <div className="copy_btn" onClick={() => {}}>
+        <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={
               copied === post.quip
                 ? "/assets/icons/tick.svg"
                 : "/assets/icons/copy.svg"
             }
+            alt="copy logo"
             width={12}
             height={12}
           />

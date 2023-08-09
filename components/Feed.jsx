@@ -13,7 +13,7 @@ const QuipCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const feed = () => {
+const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -45,4 +45,4 @@ const feed = () => {
   );
 };
 
-export default feed;
+export default Feed;
