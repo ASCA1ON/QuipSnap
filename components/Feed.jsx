@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import QuipCard from "./QuipCard";
+import LoadingSpinner from "./LoadingSpinner";
 
 const QuipCardList = ({ data, handleTagClick }) => {
   return (
@@ -15,15 +16,18 @@ const QuipCardList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
 
   const handleSearchChange = (e) => {};
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setIsLoading(true);
       const response = await fetch("/api/quip");
       const data = await response.json();
       setPosts(data);
+      setIsLoading(false);
     };
     fetchPosts();
   }, []);
@@ -40,6 +44,7 @@ const Feed = () => {
           required
         />
       </form>
+      {isLoading && <LoadingSpinner />}
       <QuipCardList data={posts} handleTagClick={() => {}} />
     </section>
   );

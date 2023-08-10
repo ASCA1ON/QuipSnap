@@ -18,9 +18,9 @@ const CreateQuip = () => {
   const createQuip = async (e) => {
     e.preventDefault()
     setSubmitting(true)
-    // if(!session){
-    //     router.push('/si')
-    // }
+    if(!session){
+        return alert("Sign in required.",router.push('/'))
+    }
     try{
         const response = await fetch('/api/quip/new',{
             method:'POST',
