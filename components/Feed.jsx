@@ -18,8 +18,8 @@ const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
-
-  const handleSearchChange = (e) => {};
+  const [searchTimeout, setSearchTimeout] = useState(null);
+  const [searchedResults, setSearchedResults] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,6 +31,35 @@ const Feed = () => {
     };
     fetchPosts();
   }, []);
+
+  const handleSearchChange = (e) => {
+    clearTimeout(searchTimeout);
+    setSearchText(e.target.value);
+
+    //! debounce method
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResult = filterQuips(e.target.value);
+        setSearchedResults(searchResult);
+      }, 500)
+    );
+  };
+
+  const filterQuips = (searchtext) => {
+    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+    return posts.filter(
+      (item) =>
+        regex.test(item.creator.username) ||
+        regex.test(item.tag) ||
+        regex.test(item.quip)
+    );
+  };
+  
+  const handleTagClick = (tagValue)=>{
+    setSearchText(tagValue)
+    const searchResult = filterQuips(tagValue);
+    setSearchedResults(searchResult);
+  }
 
   return (
     <section className="feed">
@@ -45,7 +74,11 @@ const Feed = () => {
         />
       </form>
       {isLoading && <LoadingSpinner />}
-      <QuipCardList data={posts} handleTagClick={() => {}} />
+      {searchText ? (
+        <QuipCardList data={searchedResults} handleTagClick={handleTagClick} />
+      ) : (
+        <QuipCardList data={posts} handleTagClick={handleTagClick} />
+      )}
     </section>
   );
 };
