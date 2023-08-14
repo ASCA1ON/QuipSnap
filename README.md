@@ -1,5 +1,5 @@
 
-# QuipSnap 💬
+# QuipSnap
 
 QuipSnap is a social media web application built using Next.js 13 for the frontend and backend and MongoDB for the database.
 
