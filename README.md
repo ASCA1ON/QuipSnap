@@ -55,7 +55,7 @@ QuipSnap should now be running at `http://localhost:3000`! 🎉
 
 I plan to deploy this project to Vercel/Netlify/etc. The deployed link will be added here once available:
 
-Deployed Link:
+Deployed Link: https://quip-snap.vercel.app/
 
 ## 🛠 Built With
 
