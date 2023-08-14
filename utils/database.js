@@ -6,7 +6,7 @@ export const connectToDB = async ()=>{
     mongoose.set('strictQuery', true)
 
     if(isConnected){
-        console.log('Db is connected');
+        // console.log('Db is connected');
         return;
     }
 
@@ -17,7 +17,7 @@ export const connectToDB = async ()=>{
             useUnifiedTopology:true
         })
         isConnected=true
-        console.log("DB is connected");
+        // console.log("DB is connected");
     } catch (error) {
         console.log(error);
     }
