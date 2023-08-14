@@ -21,7 +21,7 @@ To run QuipSnap locally:
 
 1. Clone this repo
    ```sh
-   git clone https://github.com/<your-username>/quipsnap.git
+   git clone https://github.com/ASCA1ON/QuipSnap.git
    ```
 
 2. Navigate into the project directory
