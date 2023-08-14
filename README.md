@@ -1,6 +1,8 @@
 
 # QuipSnap
 
+Share quips and connect with friends. The social network for short-form thoughts.
+
 QuipSnap is a social media web application built using Next.js 13 for the frontend and backend and MongoDB for the database.
 
 
